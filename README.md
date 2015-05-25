@@ -22,6 +22,20 @@ https://github.com/mikel/mail/blob/master/lib/mail/elements/address.rb
 hostnames are well defined on wikipedia
 the whole email and local part less so.
 
+Probably should go for immutability so hand out copies when querying string
+
+```rb
+class Frozen
+  def initialize(value)
+    define_singleton_method :value do
+      value
+    end
+    freeze
+  end
+
+end
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
