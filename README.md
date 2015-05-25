@@ -24,6 +24,11 @@ the whole email and local part less so.
 
 Probably should go for immutability so hand out copies when querying string
 
+#### Boolean
+The boolean class is odd in that it returns true or false and not instances
+
+#### Integer
+
 ```rb
 class Frozen
   def initialize(value)

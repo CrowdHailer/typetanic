@@ -1,4 +1,5 @@
 module Typetanic
+  # TODO test
   class Boolean
     PredicatesUndefined = Class.new StandardError
 
