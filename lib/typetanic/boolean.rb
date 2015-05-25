@@ -1,6 +1,7 @@
 module Typetanic
   # TODO test
   class Boolean
+    extend Forge
     PredicatesUndefined = Class.new StandardError
 
     def self.affirmative
@@ -25,13 +26,6 @@ module Typetanic
       raise Invalid, "'#{raw}' is neither affirmative or negative"
     end
 
-    def self.forge(raw)
-      begin
-        new raw
-      rescue Typetanic::Invalid => err
-        yield err
-      end
-    end
   end
 
   def self.Boolean(affirmative:, negative:)

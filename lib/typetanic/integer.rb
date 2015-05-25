@@ -1,6 +1,7 @@
 module Typetanic
   # TODO test
   class Integer
+    extend Forge
     PredicatesUndefined = Class.new StandardError
     REGEX = /^\s*[+-]?\d+\s*$/
     def self.new(raw)
@@ -10,12 +11,5 @@ module Typetanic
       return match.to_i
     end
 
-    def self.forge(raw)
-      begin
-        new raw
-      rescue Typetanic::Invalid => err
-        yield err
-      end
-    end
   end
 end
