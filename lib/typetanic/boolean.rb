@@ -1,0 +1,49 @@
+module Typetanic
+  class Boolean
+    PredicatesUndefined = Class.new StandardError
+
+    def self.affirmative
+      raise PredicatesUndefined, 'No affirmative inputs'
+    end
+
+    def self.negative
+      raise PredicatesUndefined, 'No negative inputs'
+    end
+
+    def self.affirmative?(raw)
+      affirmative.include? raw
+    end
+
+    def self.negative?(raw)
+      negative.include? raw
+    end
+
+    def self.new(raw)
+      return true if affirmative? raw
+      return false if negative? raw
+      raise Invalid, "'#{raw}' is neither affirmative or negative"
+    end
+
+    def self.forge(raw)
+      begin
+        new raw
+        # TODO Typetanic Invalid should inherit off argument error
+      rescue Typetanic::Email::Invalid => err
+        yield err
+      end
+    end
+  end
+
+  def self.Boolean(affirmative:, negative:)
+    Class.new Boolean do
+      define_singleton_method :affirmative do
+        affirmative
+      end
+
+      define_singleton_method :negative do
+        negative
+      end
+    end
+  end
+
+end
