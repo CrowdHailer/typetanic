@@ -28,8 +28,7 @@ module Typetanic
     def self.forge(raw)
       begin
         new raw
-        # TODO Typetanic Invalid should inherit off argument error
-      rescue Typetanic::Email::Invalid => err
+      rescue Typetanic::Invalid => err
         yield err
       end
     end
