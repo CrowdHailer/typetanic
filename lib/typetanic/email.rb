@@ -10,7 +10,6 @@ end
 module Typetanic
   class Email
     extend Forge
-    Invalid = Class.new(StandardError)
     extend Stash
 
     def initialize(value)
