@@ -1,0 +1,3 @@
+module Typetanic
+  VERSION = "0.0.1"
+end
