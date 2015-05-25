@@ -47,5 +47,21 @@ module Typetanic
         Email.dump('string')
       end
     end
+
+    # def test_separates_domains
+    #   assert_equal ['com', 'example'], example_email.domains
+    # end
+    #
+    # def test_fetch_top_level_domain
+    #   assert_equal 'com', example_email.top_level_domain
+    # end
+    #
+    # def test_separates_local_part
+    #   assert_equal 'example', example_email.local
+    # end
+    #
+    # def test_separates_hostname
+    #   assert_equal 'example.com', example_email.hostname
+    # end
   end
 end
