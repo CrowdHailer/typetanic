@@ -1,3 +1,4 @@
+# TODO fix this mess
 module Stash
   ItemError = Class.new(StandardError)
 
@@ -8,6 +9,7 @@ module Stash
 end
 
 module Typetanic
+  Stash = ::Stash
   class Email
     extend Forge
     extend Stash
