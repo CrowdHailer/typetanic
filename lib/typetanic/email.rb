@@ -1,15 +1,7 @@
-# TODO fix this mess
-module Stash
-  ItemError = Class.new(StandardError)
-
-  def dump(item)
-    raise ItemError.new item unless item.is_a?(self)
-    item.dump
-  end
-end
+require_relative './util/forge'
+require_relative './util/stash'
 
 module Typetanic
-  Stash = ::Stash
   class Email
     extend Forge
     extend Stash
@@ -19,7 +11,7 @@ module Typetanic
     end
 
     def self.load(string)
-      new(string)
+      new string
     end
 
     def to_s
