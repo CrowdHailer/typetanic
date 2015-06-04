@@ -53,6 +53,7 @@ end
 - I don't know if forge without a block should reraise the exisiting error or return a specific ForgeError
 - I would be tempted to privatise the `new` method after creating forge as it is the new method that will correctly handle singleton objects. In addition it's easy to use new through habit, which is probably not wanted after including a forge method.
 
+Think decided ArgumentError best as [].fetch 1 throws IndexError and {}.fetch :a throws KeyError
 
 ##### Stash
 Adds a `stash` and `load` method to reduce the type to a primitive that can be stored in a database. Normally the same as `to_s` and `new` but added here for unusual situations.
@@ -60,6 +61,8 @@ Adds a `stash` and `load` method to reduce the type to a primitive that can be s
 
 ## Included
 1. Email
+
+Email has been used as a prototype coming soon.
 2. title
 3. name
 4. month
@@ -81,24 +84,6 @@ https://github.com/mikel/mail/blob/master/lib/mail/elements/address.rb
 hostnames are well defined on wikipedia
 the whole email and local part less so.
 
-Probably should go for immutability so hand out copies when querying string
-
-#### Boolean
-The boolean class is odd in that it returns true or false and not instances
-
-#### Integer
-
-```rb
-class Frozen
-  def initialize(value)
-    define_singleton_method :value do
-      value
-    end
-    freeze
-  end
-
-end
-```
 
 ## Installation
 
@@ -131,3 +116,18 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+Probably should go for immutability so hand out copies when querying string
+
+## Misc
+
+```rb
+class Frozen
+  def initialize(value)
+    define_singleton_method :value do
+      value
+    end
+    freeze
+  end
+
+end
+```
