@@ -44,7 +44,6 @@ module Typetanic
     def ==(other)
       to_s == other.to_s
     end
-    # alias_method :eql?, :==
 
     def self.load(string)
       new string
