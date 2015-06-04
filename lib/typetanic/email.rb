@@ -9,9 +9,11 @@ module Typetanic
 
     REGEX = /^(?<local_part>[^@]+)@(?<hostname>[^@]+)$/
 
-    def initialize(value)
-      @match = REGEX.match value.strip
-      match or invalid value
+    def initialize(raw)
+      @match = REGEX.match raw.strip
+      unless match
+        raise Invalid.new "'#{raw}' is not a valid email"
+      end
     end
 
     attr_reader :match
@@ -34,6 +36,10 @@ module Typetanic
       array.reverse
     end
 
+    def top_level_domain
+      domains.first
+    end
+
     def to_s
       @match.to_s
     end
@@ -45,10 +51,5 @@ module Typetanic
     end
     # alias_method :eql?, :==
 
-    private
-
-    def invalid(bad_format)
-      raise Invalid.new "'#{bad_format}' is not a valid email"
-    end
   end
 end
