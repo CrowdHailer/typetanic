@@ -19,10 +19,6 @@ module Typetanic
     attr_reader :match
     private :match
 
-    def self.load(string)
-      new string
-    end
-
     def local_part
       match[:local_part]
     end
@@ -44,12 +40,15 @@ module Typetanic
       @match.to_s
     end
     alias_method :to_str, :to_s
-    alias_method :dump, :to_s
 
     def ==(other)
       to_s == other.to_s
     end
     # alias_method :eql?, :==
 
+    def self.load(string)
+      new string
+    end
+    alias_method :dump, :to_s
   end
 end

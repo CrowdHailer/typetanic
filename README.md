@@ -11,6 +11,8 @@ These are all part of my drive to use more domain specific objects. I understand
 Comparison
 
 All types are value objects, an instance's identity is characterized it's external attributes.
+Answers to what each equal should be
+http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
 
 Immutability
 
