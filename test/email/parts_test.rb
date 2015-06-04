@@ -18,12 +18,12 @@ module Typetanic
       assert_equal 'example.com', example_email.hostname
     end
 
-    # def test_separates_domains
-    #   assert_equal ['com', 'example'], example_email.domains
-    # end
-    #
-    # def test_fetch_top_level_domain
-    #   assert_equal 'com', example_email.top_level_domain
-    # end
+    def test_separates_domains
+      assert_equal ['com', 'example'], example_email.domains
+    end
+
+    def test_fetch_top_level_domain
+      assert_equal 'com', example_email.top_level_domain
+    end
   end
 end

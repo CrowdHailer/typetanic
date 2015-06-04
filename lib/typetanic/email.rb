@@ -29,6 +29,11 @@ module Typetanic
       match[:hostname]
     end
 
+    def domains
+      array = hostname.split '.'
+      array.reverse
+    end
+
     def to_s
       @match.to_s
     end
