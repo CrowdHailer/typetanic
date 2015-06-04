@@ -92,7 +92,7 @@ the whole email and local part less so.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'typetanic'
+gem 'typetanic', :require => false
 ```
 
 And then execute:
@@ -105,7 +105,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Require each type that you need.
+2. Subclass to your own domain object.
+
+email.rb
+```rb
+require 'typetanic/email'
+
+class Email < Typetanic::Email
+  # custom code here.
+  # for example is this email at my company.
+  def company?
+    hostname == 'workshop14.io'
+  end
+end
+```
+
+headline.rb
+```rb
+require 'typetanic/title'
+
+class Headline < Typetanic::Title
+end
+```
 
 ## Docs
 #### Most types
