@@ -1,35 +1,42 @@
 require_relative './util/forge'
 require_relative './util/stash'
+require_relative './exceptions'
 
 module Typetanic
   class Email
     extend Forge
     extend Stash
 
+    REGEX = /^(?<local_part>[^@]+)@(?<hostname>[^@]+)$/
+
     def initialize(value)
-      self.value = value
+      @match = REGEX.match value.strip
+      match or invalid value
     end
+
+    attr_reader :match
+    private :match
 
     def self.load(string)
       new string
     end
 
+    def local_part
+      match[:local_part]
+    end
+
+    def hostname
+      match[:hostname]
+    end
+
     def to_s
-      value
+      @match.to_s
     end
     alias_method :to_str, :to_s
     alias_method :dump, :to_s
 
-    def value
-      @value
-    end
-
-    def value=(new_value)
-      @value = new_value.strip[/^[^@]+@[^@]+$/] || invalid(new_value)
-    end
-
     def ==(other)
-      other.is_a?(self.class) && value == other.value
+      other.is_a?(self.class) && to_s == other.to_s
     end
     # alias_method :eql?, :==
 
