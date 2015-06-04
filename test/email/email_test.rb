@@ -31,20 +31,20 @@ module Typetanic
     end
 
     def test_raises_error_for_email_with_no_at
-      assert_raises Email::Invalid do
-        Email.new('bad')
+      assert_raises Invalid do
+        Email.new 'bad'
       end
     end
 
     def test_raises_error_for_email_with_two_ats
-      assert_raises Email::Invalid do
-        Email.new('a@b@c.com')
+      assert_raises Invalid do
+        Email.new 'a@b@c.com'
       end
     end
 
     def test_raises_error_when_dumping_not_an_email
       assert_raises Stash::ItemError do
-        Email.dump('string')
+        Email.dump 'string'
       end
     end
 

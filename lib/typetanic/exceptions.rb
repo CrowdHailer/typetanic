@@ -1,3 +1,3 @@
 module Typetanic
-  Invalid = Class.new(ArgumentError)
+  Invalid = Class.new ArgumentError
 end

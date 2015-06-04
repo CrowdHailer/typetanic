@@ -1,11 +1,9 @@
 module Typetanic
   module Forge
     def forge(raw)
-      begin
-        new raw
-      rescue Typetanic::Invalid => err
-        yield err
-      end
+      new raw
+    rescue Typetanic::Invalid => error
+      yield error
     end
   end
 end
