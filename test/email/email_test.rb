@@ -26,8 +26,8 @@ module Typetanic
       assert_equal example_string, example_email.to_str
     end
 
-    def test_is_not_equal_to_string
-      refute_equal example_email, example_string
+    def test_is_equal_to_string
+      assert_equal example_email, example_string
     end
 
     def test_raises_error_for_email_with_no_at

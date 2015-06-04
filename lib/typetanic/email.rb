@@ -36,7 +36,7 @@ module Typetanic
     alias_method :dump, :to_s
 
     def ==(other)
-      other.is_a?(self.class) && to_s == other.to_s
+      to_s == other.to_s
     end
     # alias_method :eql?, :==
 
