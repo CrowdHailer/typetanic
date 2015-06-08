@@ -133,3 +133,17 @@ class Frozen
 
 end
 ```
+
+My library is typetanic. It is open source and contributions are of course welcome.
+but its real value is too me. Im not sure I want to create
+
+```rb
+class Title < Typetanic::String
+  min_length 5
+  max_length 10
+  value_format /^[A-Z][a-zA-Z0-9\s]+$/
+  capitalise true
+end
+```
+
+it looks nice but i think is over kill
