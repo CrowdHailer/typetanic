@@ -147,3 +147,27 @@ end
 ```
 
 it looks nice but i think is over kill
+
+To combat this I have set up a library of types that I come across. It has or will have soon types for. emails, titles, names.
+
+But wait surely the conditions on a title are different from project to project.
+Yes but they don't all need to be in place from the off.
+The typetanic title is full of some handy defaults. and if you want a new thing just write your own.
+
+Good code means changing one thing.
+
+So when developing values/title.rb looks like the following
+
+```rb
+class Title < Typetanic::Title
+
+end
+```
+
+when our title has been specified
+```rb
+class Title
+  # My code
+  # It is a simple object. Just write one
+end
+```
