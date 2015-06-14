@@ -1,10 +1,52 @@
 # Typetanic
 
-**All the goodness of dedicated domain objects ready to go**
+**All the goodness of dedicated value objects ready to go**
 
-### Introduction
+Typetanic defines a collection of ruby value objects that occur across many types of applications. The collection is growing, included so far are:
 
-These are all part of my drive to use more domain specific objects. I understand the irony of having domain objects before the domain, these have just been a few useful ones that come up repeatedly.
+- [email]()
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'typetanic', :require => false
+```
+
+And then execute:
+
+```
+$ bundle
+```
+
+Or install it yourself as:
+
+```
+$ gem install typetanic
+```
+
+## Usage
+
+It is recommended NOT to require the whole of typetanic. It is unlikely all the types will be relevant. It is also recommended to subclass each type to a namespace appropriate to your domain. This has several benefits.
+
+- Extensions can be made without monkey patching the library class.
+- The typetanic version can be swapped out with minimal knock on effect.
+- The subclass can have a more appropriate name.
+
+*email_address.rb*
+```rb
+require 'typetanic/email'
+
+class EmailAddress < Typetanic::Email
+  # Any custom code to extend the email class can be added here.
+  # For example querying if the email address is local to the company.
+
+  def internal?
+    hostname == 'workshop14.io'
+  end
+end
+```
 
 *NOTE: If the object you want is not like the object defined here write your own. Or wrap with an adapter*
 
@@ -61,14 +103,6 @@ Think decided ArgumentError best as [].fetch 1 throws IndexError and {}.fetch :a
 Adds a `stash` and `load` method to reduce the type to a primitive that can be stored in a database. Normally the same as `to_s` and `new` but added here for unusual situations.
 
 
-## Included
-1. Email
-
-Email has been used as a prototype coming soon.
-2. title
-3. name
-4. month
-
 core extensions
 
 #### Email
@@ -85,53 +119,6 @@ https://github.com/mikel/mail/blob/master/lib/mail/elements/address.rb
 
 hostnames are well defined on wikipedia
 the whole email and local part less so.
-
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'typetanic', :require => false
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install typetanic
-
-## Usage
-
-1. Require each type that you need.
-2. Subclass to your own domain object.
-
-email.rb
-```rb
-require 'typetanic/email'
-
-class Email < Typetanic::Email
-  # custom code here.
-  # for example is this email at my company.
-  def company?
-    hostname == 'workshop14.io'
-  end
-end
-```
-
-headline.rb
-```rb
-require 'typetanic/title'
-
-class Headline < Typetanic::Title
-end
-```
-
-## Docs
-#### Most types
-*These are implemented on the majority of types unless it does not make sense*
 
 ## Contributing
 
