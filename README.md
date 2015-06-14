@@ -4,7 +4,7 @@
 
 Typetanic defines a collection of ruby value objects that occur across many types of applications. The collection is growing, included so far are:
 
-- [email]()
+- [email](https://github.com/CrowdHailer/typtanic#user-content-email)
 
 ## Installation
 
@@ -48,6 +48,40 @@ class EmailAddress < Typetanic::Email
 end
 ```
 
+## Included Types
+
+### Email
+
+Represents email addresses.
+- Initialization strips leading and trailing whitespace
+- It is an invalid email without and '@' symbol
+- It is also invalid with more than one '@''symbol
+
+Makes available the following parts of the address
+
+```rb
+email = Typetanic::Email.new 'name@example.com'
+
+email.local_part
+# => "name"
+
+email.hostname
+# => "example.com"
+
+email.domains
+# => ["com", "example"]
+
+email.top_level_domain
+# => "com"
+```
+
+Emails are ordered by their domains from top level down before being ordered by the local part.
+
+Email validation is not simple, advanced validation does not guarentee an email exists. For this reason the type has only simple validation. For more information check out the [isemail site](http://isemail.info/about) or [wikipedia page](http://en.wikipedia.org/wiki/Email_address)
+
+## Custom Types
+
+
 *NOTE: If the object you want is not like the object defined here write your own. Or wrap with an adapter*
 
 Comparison
@@ -63,6 +97,31 @@ All types should be treated as immutable objects. However at the moment I prefer
 Singletons
 
 sets with limited types, e.g. months, http verbs will return the same object when creating new instances.
+
+## Contributing
+
+1. Fork it ( https://github.com/[my-github-username]/typetanic/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
+Probably should go for immutability so hand out copies when querying string
+
+## Misc
+Stuff beyond here are notes and thoughts relating to ongoing development
+
+#### Immutability
+```rb
+class Frozen
+  def initialize(value)
+    define_singleton_method :value do
+      value
+    end
+    freeze
+  end
+
+end
+```
 
 ### Protocol
 The types in this gem implement a few non standard methods that
@@ -101,45 +160,3 @@ Think decided ArgumentError best as [].fetch 1 throws IndexError and {}.fetch :a
 
 ##### Stash
 Adds a `stash` and `load` method to reduce the type to a primitive that can be stored in a database. Normally the same as `to_s` and `new` but added here for unusual situations.
-
-
-core extensions
-
-#### Email
-Email validation is a tricky topic
-
-http://isemail.info/about
-
-http://en.wikipedia.org/wiki/Email_address
-
-https://github.com/mikel/mail/blob/master/lib/mail/elements/address.rb
-
-> local@hostname
-> username@domain.toptevel.domain
-
-hostnames are well defined on wikipedia
-the whole email and local part less so.
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/typetanic/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-Probably should go for immutability so hand out copies when querying string
-
-## Misc
-
-#### Immutability
-```rb
-class Frozen
-  def initialize(value)
-    define_singleton_method :value do
-      value
-    end
-    freeze
-  end
-
-end
-```
