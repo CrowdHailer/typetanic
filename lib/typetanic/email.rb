@@ -41,6 +41,12 @@ module Typetanic
     end
     alias_method :to_str, :to_s
 
+    def <=>(other)
+      domain_comparison = domains.join <=> other.domains.join
+      return domain_comparison unless domain_comparison == 0
+      local_part <=> other.local_part
+    end
+
     def ==(other)
       to_s == other.to_s
     end

@@ -156,30 +156,3 @@ class Frozen
 
 end
 ```
-
-#### Email extensions
-
-```rb
-alias_method :eql?, :==
-
-include Comparable
-def <=>(other)
-  result = top_level_domain <=> other.top_level_domain
-  return result unless result == 0
-  # Probably needs a domain object to be implemented properly
-  local_part <=> other.local_part
-end
-
-
-def test_ordering
-  arr = [
-    Email.new('a@b.c'),
-    Email.new('a@c'),
-    Email.new('a@b.x'),
-    Email.new('a@a.c'),
-    Email.new('b@a.c'),
-    Email.new('ab@a.c')
-  ]
-  puts arr.sort
-end
-```
