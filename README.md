@@ -28,11 +28,13 @@ $ gem install typetanic
 
 ## Usage
 
-It is recommended NOT to require the whole of typetanic. It is unlikely all the types will be relevant. It is also recommended to subclass each type to a namespace appropriate to your domain. This has several benefits.
+It is recommended NOT to require the whole of typetanic. It is unlikely all the types will be relevant. It is also recommended to subclass each type to a namespace appropriate to your domain*. This has several benefits.
 
 - Extensions can be made without monkey patching the library class.
 - The typetanic version can be swapped out with minimal knock on effect.
 - The subclass can have a more appropriate name.
+
+*This is why all types are in the Typetanic namespace, see this [post](http://insights.workshop14.io/2015/05/28/ruby-require-and-broad-modules.html) for more details*
 
 *email_address.rb*
 ```rb
