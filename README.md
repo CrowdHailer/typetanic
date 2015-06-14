@@ -83,20 +83,24 @@ Email validation is not simple, advanced validation does not guarentee an email 
 
 ## Custom Types
 
+Typtanic exists to reduce some of the startup time with specifying domain objects for all parts of your system. This can be time consuming particuarly early on when requirements are changing rapidly. Use these types when generic types are appropriate or most time effective.
 
-*NOTE: If the object you want is not like the object defined here write your own. Or wrap with an adapter*
+The included types come with no configuration options. If you find the type is no longer appropriate for your domain it should be switched out for a custom object. This should be trivial if the advice in the usage section is followed.
 
-Comparison
+The rest of this section contains resources useful for building robust custom types.
 
-All types are value objects, an instance's identity is characterized it's external attributes.
-Answers to what each equal should be
+#### String coercion
+http://briancarper.net/blog/98/
+
+#### Equality
 http://stackoverflow.com/questions/7156955/whats-the-difference-between-equal-eql-and
 
-Immutability
+#### Comparability
 
-All types should be treated as immutable objects. However at the moment I prefer complying with the contract that I will not mutate them than perfoming any trickery to ensure that they are not mutatable
+#### Immutability
+All value objects should be treated as immutable. At the moment I prefer complying with the contract that I will not mutate value objects. Ruby allows most things an ensuring immutability requires a few tricks.
 
-Singletons
+#### Singletons
 
 sets with limited types, e.g. months, http verbs will return the same object when creating new instances.
 
