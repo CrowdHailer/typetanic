@@ -1,6 +1,6 @@
 # Typetanic
 
-**All the goodness of dedicated value objects ready to go**
+**All the goodness of dedicated value objects ready to go**, [Post on the 'value' of value objects](http://insights.workshop14.io/2015/07/15/value-objects-in-ruby.html)
 
 Typetanic defines a collection of ruby value objects that occur across many types of applications. The collection is growing, included so far are:
 
