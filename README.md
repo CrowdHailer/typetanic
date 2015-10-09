@@ -81,6 +81,12 @@ Emails are ordered by their domains from top level down before being ordered by 
 
 Email validation is not simple, advanced validation does not guarentee an email exists. For this reason the type has only simple validation. For more information check out the [isemail site](http://isemail.info/about) or [wikipedia page](http://en.wikipedia.org/wiki/Email_address)
 
+## Planned Types
+
+- Username
+- Mr/Mrs etc
+- password
+
 ## Custom Types
 
 Typtanic exists to reduce some of the startup time with specifying domain objects for all parts of your system. This can be time consuming particuarly early on when requirements are changing rapidly. Use these types when generic types are appropriate or most time effective.
